@@ -30,32 +30,32 @@ $(document).ready(function () {
             first = !first;
             timeNextTemp = Date.now();
         }
-        if (!keydown[event.which]) {
-            keydown[event.which] = true;
-            timeTemp[event.which] = new Date();
-            timeNext[event.which] = Date.now() - timeNextTemp;
+        if (!keydown[event.key]) {
+            keydown[event.key] = true;
+            timeTemp[event.key] = new Date();
+            timeNext[event.key] = Date.now() - timeNextTemp;
         }
         timeNextTemp = Date.now();
     });
 
     $("#txtArea").keyup(function (event) {
-        keydown[event.which] = false;
-        timeClick[event.which] = Date.now() - timeTemp[event.which];
+        keydown[event.key] = false;
+        timeClick[event.key] = Date.now() - timeTemp[event.key];
         name = $("#txtInput").val();
 
         if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46)
         {
-            send(event.which);
+            send(event.key);
         }
     });
 
 
     function send(key) {
-        $("#id").val(key + "[" + String.fromCharCode(key) + "]");
+        $("#id").val(key);
         $("#click").val(timeClick[key] + "ms");
         $("#next").val(timeNext[key] + "ms");
 
-        console.log("Wciśnięty klawisz: " + key + "[" + String.fromCharCode(key) + "]\n" +
+        console.log("Wciśnięty klawisz: " + key + "\n" +
             "Czas przytrzymania klawisza: " + timeClick[key] + "ms\n" +
             "Czas od poprzedniego znaku: " + timeNext[key] + "ms");
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
                 type: "POST",
                 data: JSON.stringify({
                     "name": name,
-                    "keyId": key,
+                    "keySign": key,
                     "timeClick": timeClick[key],
                     "timeNext": timeNext[key]
                 }),
