@@ -12,7 +12,7 @@ public class GetData {
     @Id
     long id;
     String name;
-    int keyId;
+    String keySign;
     int timeClick;
     int timeNext;
 
@@ -32,12 +32,12 @@ public class GetData {
         this.name = name;
     }
 
-    public int getKeyId() {
-        return keyId;
+    public String getKeySign() {
+        return keySign;
     }
 
-    public void setKeyId(int keyId) {
-        this.keyId = keyId;
+    public void setKeySign(String keySign) {
+        this.keySign = keySign;
     }
 
     public int getTimeClick() {
