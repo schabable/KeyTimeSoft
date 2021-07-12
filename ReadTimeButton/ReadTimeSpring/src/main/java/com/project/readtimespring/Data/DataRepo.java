@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface DataRepo extends CrudRepository<GetData, Long> {
+public interface DataRepo extends CrudRepository<GetData, Integer> {
 
 
 }
