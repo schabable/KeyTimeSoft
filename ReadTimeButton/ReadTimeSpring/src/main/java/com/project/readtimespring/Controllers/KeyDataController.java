@@ -26,8 +26,8 @@ public class KeyDataController {
 
     @GetMapping(path = "/all")
     public @ResponseBody
-    Iterable<GetData> getAllUsers() {
-        return repo.findAll();
+    List<GetData> getAllUsers() {
+        return repo.findAll(Sort.by("name"));
     }
 
 
