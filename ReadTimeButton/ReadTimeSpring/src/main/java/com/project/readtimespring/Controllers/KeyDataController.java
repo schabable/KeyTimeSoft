@@ -35,7 +35,7 @@ public class KeyDataController {
     @GetMapping(path = "/all")
     public @ResponseBody
     List<GetData> getAllUsers() {
-        return repo.findAll(Sort.by("name"));
+        return repo.findAll(Sort.by("id").and(Sort.by("name").ascending()));
     }
 
     @Autowired
@@ -54,8 +54,8 @@ public class KeyDataController {
         List<GetData> listData = service.listAll();
 
         ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
-        String[] csvHeader = {"ID", "name", "KeySign", "TimeClick", "TimeNext"};
-        String[] nameMapping = {"id", "name", "keySign", "timeClick", "timeNext"};
+        String[] csvHeader = {"ID", "name", "KeyCode", "TimeClick", "TimeNext"};
+        String[] nameMapping = {"id", "name", "keyCode", "timeClick", "timeNext"};
 
 
         csvWriter.writeHeader(csvHeader);

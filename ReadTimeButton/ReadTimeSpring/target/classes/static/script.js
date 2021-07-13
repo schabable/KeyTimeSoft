@@ -26,68 +26,36 @@ $(document).ready(function () {
             $("#txtInput").prop("disabled", false);
         }
 
-        if(!event.shiftKey)
-        {
-            if (first) {
-                first = !first;
-                timeNextTemp = Date.now();
-            }
-            if (!keydown[event.which+32]) {
-                keydown[event.which+32] = true;
-                timeTemp[event.which+32] = new Date();
-                timeNext[event.which+32] = Date.now() - timeNextTemp;
-            }
+        if (first) {
+            first = !first;
             timeNextTemp = Date.now();
         }
-        else
-        {
-            if (first) {
-                first = !first;
-                timeNextTemp = Date.now();
-            }
-            if (!keydown[event.which]) {
-                keydown[event.which] = true;
-                timeTemp[event.which] = new Date();
-                timeNext[event.which] = Date.now() - timeNextTemp;
-            }
-            timeNextTemp = Date.now();
+        if (!keydown[event.which]) {
+            keydown[event.which] = true;
+            timeTemp[event.which] = new Date();
+            timeNext[event.which] = Date.now() - timeNextTemp;
         }
-
+        timeNextTemp = Date.now();
     });
 
     $("#txtArea").keyup(function (event) {
-        if(!event.shiftKey)
+        keydown[event.which] = false;
+        timeClick[event.which] = Date.now() - timeTemp[event.which];
+        name = $("#txtInput").val();
+
+        if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46)
         {
-            keydown[event.which+32] = false;
-            timeClick[event.which+32] = Date.now() - timeTemp[event.which+32];
-            name = $("#txtInput").val();
-
-            if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46)
-            {
-                send(event.which+32);
-            }
+            send(event.which);
         }
-        else
-        {
-            keydown[event.which] = false;
-            timeClick[event.which] = Date.now() - timeTemp[event.which];
-            name = $("#txtInput").val();
-
-            if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46)
-            {
-                send(event.which);
-            }
-        }
-
     });
 
 
     function send(key) {
-        $("#id").val(key + "[" + String.fromCharCode(key) + "]");
+        $("#id").val(key+"["+String.fromCharCode(key)+"]");
         $("#click").val(timeClick[key] + "ms");
         $("#next").val(timeNext[key] + "ms");
 
-        console.log("Wciśnięty klawisz: " + key + "[" + String.fromCharCode(key) + "]\n" +
+        console.log("Wciśnięty klawisz: " + key +"["+ String.fromCharCode(key)+ "]\n" +
             "Czas przytrzymania klawisza: " + timeClick[key] + "ms\n" +
             "Czas od poprzedniego znaku: " + timeNext[key] + "ms");
 
@@ -98,7 +66,7 @@ $(document).ready(function () {
                 type: "POST",
                 data: JSON.stringify({
                     "name": name,
-                    "keyId": key,
+                    "keyCode": key,
                     "timeClick": timeClick[key],
                     "timeNext": timeNext[key]
                 }),
