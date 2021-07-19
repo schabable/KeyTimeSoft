@@ -7,13 +7,14 @@
         <link rel="shortcut icon" href="#"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="script.js"></script>
+        <script src="../../../../../.idea/website/classification_report.json"></script>
     </head>
     <body>
         <div class="okno">
             <label>Podaj swoje imię:</label><br>
             <input id="txtInput" name="txtInputt"/><br><br>
             <label>Napisz coś o sobie:</label><br>
-            <textarea id="txtArea" type="text" name="textArea" maxlength="150"></textarea><br>
+            <textarea id="txtArea" type="text" name="textArea" maxlength="3000"></textarea><br>
         </div>
 
         <div class="wynik">
@@ -21,7 +22,7 @@
             <label>Czas przytrzymania klawisza: </label><input type="text" id="click" disabled><br>
             <label>Czas od poprzedniego znaku: </label><input type="text" id="next" disabled>
         </div>
-
-        <input type="button" value="Wyczyść" id="reset" onclick="reset()">
+        <input type="button" value="Weryfikuj" id="button" onclick="newwin()">
+        <input type="button" value="Wyczyść" id="button" onclick="reset()">
     </body>
 </html>

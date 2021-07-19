@@ -1,17 +1,22 @@
 package com.project.readtimespring.Controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.readtimespring.Data.CSVService;
 import com.project.readtimespring.Data.DataRepo;
 import com.project.readtimespring.Data.GetData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
+
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,6 +25,7 @@ import java.util.List;
 public class KeyDataController {
     @Autowired
     DataRepo repo;
+
 
     @CrossOrigin
     @RequestMapping(value = "/ArrayData", method = RequestMethod.POST)
@@ -32,11 +38,26 @@ public class KeyDataController {
         return getData;
     }
 
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Autowired
+    ResourceLoader resourceLoader;
+
+    @GetMapping("/json")
+    public File test() throws IOException {
+        File file = new ClassPathResource("./report.json").getFile();
+        return file;
+
+    }
+
+
     @GetMapping(path = "/all")
     public @ResponseBody
     List<GetData> getAllUsers() {
         return repo.findAll(Sort.by("id").and(Sort.by("name").ascending()));
     }
+
 
     @Autowired
     private CSVService service;
@@ -67,4 +88,6 @@ public class KeyDataController {
         csvWriter.close();
 
     }
+
+
 }
