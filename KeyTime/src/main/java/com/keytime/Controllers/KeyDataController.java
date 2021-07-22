@@ -35,18 +35,8 @@ public class KeyDataController {
         return getData;
     }
 
-
-    @GetMapping(path = "/all")
-    public @ResponseBody
-    List<GetData> getAllUsers() {
-        return repo.findAll(Sort.by("id").and(Sort.by("name").ascending()));
-    }
-
-
     @Autowired
     private CSVService service;
-
-
     @GetMapping(path = "/export")
     public void exportToCSV(HttpServletResponse response) throws IOException {
         response.setContentType("text/csv");
@@ -70,6 +60,5 @@ public class KeyDataController {
         }
 
         csvWriter.close();
-
     }
 }

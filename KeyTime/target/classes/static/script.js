@@ -36,9 +36,7 @@ $(document).ready(function () {
             timeNext[event.which] = Date.now() - timeNextTemp;
         }
         timeNextTemp = Date.now();
-    });
-
-    $("#txtArea").keyup(function (event) {
+    }).keyup(function (event) {
         keydown[event.which] = false;
         timeClick[event.which] = Date.now() - timeTemp[event.which];
         name = $("#txtInput").val();
@@ -48,6 +46,7 @@ $(document).ready(function () {
             send(event.which);
         }
     });
+
 
 
     function send(key) {

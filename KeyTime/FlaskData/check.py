@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 def check(df):
-    names = {'0': 'Krystian', '1': 'Kinga', '2': 'Patryk', '3': 'Maciek'}
+    names = {'0': 'Krystian', '1': 'Kinga', '2': 'Patryk'}
     model = joblib.load("model.joblib")
 
     newTest = df

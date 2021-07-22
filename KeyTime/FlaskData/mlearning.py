@@ -23,7 +23,7 @@ data.pop("ID")
 X = data.drop('name', axis=1)
 
 y = data['name']
-names = {'Krystian': 0, 'Kinga': 1, 'Patryk': 2, 'Maciek': 3}
+names = {'Krystian': 0, 'Kinga': 1, 'Patryk': 2}
 y = y.apply(lambda x: names[x])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)

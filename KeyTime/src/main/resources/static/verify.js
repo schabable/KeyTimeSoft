@@ -6,15 +6,11 @@ $(document).ready(function () {
     var timeNextTemp = 0;
     var keydown = [];
     var first = true;
-    var name = "";
-    var areaLength = 0;
     var check = [];
     var i = 0;
     var array = [];
 
     $("#txtAreaVerify").keydown(function (event) {
-
-
         if (first) {
             first = !first;
             timeNextTemp = Date.now();
@@ -25,9 +21,7 @@ $(document).ready(function () {
             timeNext[event.which] = Date.now() - timeNextTemp;
         }
         timeNextTemp = Date.now();
-    });
-
-    $("#txtAreaVerify").keyup(function (event) {
+    }).keyup(function (event) {
         keydown[event.which] = false;
         timeClick[event.which] = Date.now() - timeTemp[event.which];
 
@@ -35,6 +29,15 @@ $(document).ready(function () {
             toPython(event.which);
         }
     });
+
+    // $("#txtAreaVerify").keyup(function (event) {
+    //     keydown[event.which] = false;
+    //     timeClick[event.which] = Date.now() - timeTemp[event.which];
+    //
+    //     if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46) {
+    //         toPython(event.which);
+    //     }
+    // });
 
 
     function toPython(key) {
@@ -77,4 +80,7 @@ $(document).ready(function () {
 
 function back() {
     location.replace("./index.html");
+}
+function reset() {
+    location.reload();
 }
