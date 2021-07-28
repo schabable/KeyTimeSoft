@@ -94,7 +94,7 @@ input {
     padding: 10px;
     padding-top: 30px;
     width: 800px;
-    height: 600px;
+    height: 750px;
     position: relative;
     top: 50%;
     margin: 60px auto 0;
@@ -114,7 +114,7 @@ input {
     border-radius: 15px;
     font-weight: bold;
 }
-#buttonv{
+.buttonv{
     font-family: "Calibri Light";
     color:white;
     background: #8f8f8f;
@@ -130,4 +130,20 @@ input {
 
 #name{
     margin-top: 20px;
+}
+
+#txtAreaVerify
+{
+    width:750px;
+    height:300px;
+    font-size: 40px;
+}
+
+#txtVerify
+{
+    margin-top:30px;
+    width:750px;
+    height:250px;
+    font-size: 39px;
+    text-align: center;
 }

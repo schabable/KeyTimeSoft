@@ -30,17 +30,10 @@ $(document).ready(function () {
         }
     });
 
-    // $("#txtAreaVerify").keyup(function (event) {
-    //     keydown[event.which] = false;
-    //     timeClick[event.which] = Date.now() - timeTemp[event.which];
-    //
-    //     if (event.which !== 8 && event.which !== 9 && event.which !== 16 && event.which !== 17 && event.which !== 18 && event.which !== 46) {
-    //         toPython(event.which);
-    //     }
-    // });
 
 
     function toPython(key) {
+
 
         array = JSON.stringify({
             "keyCode": key,
@@ -56,25 +49,34 @@ $(document).ready(function () {
         i++;
     }
 
-    $("#check").on("click", function () {
+    $("#check").on("click", function ()
+    {
 
-        console.log(check);
+        if($("#txtAreaVerify").val().length<130)
+        {
+            alert("Wpisany tekst jest za krótki!");
+        }
+        else
+        {
+            console.log(check);
 
-        SlickLoader.enable();
-        $.ajax({
-            url: 'http://localhost:5000/test',
-            type: 'post',
-            contentType: 'application/json;charset=utf-8',
-            data: JSON.stringify(check)
-        }).done(function (response) {
-            console.log(response);
+            SlickLoader.enable();
+            $.ajax({
+                url: 'http://localhost:5000/test',
+                type: 'post',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(check)
+            }).done(function (response) {
+                console.log(response);
 
-            $("#name").val(response);
-            SlickLoader.disable();
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.log("fail: ", textStatus, errorThrown);
-            SlickLoader.disable();
-        });
+                $("#name").val(response);
+                SlickLoader.disable();
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("fail: ", textStatus, errorThrown);
+                SlickLoader.disable();
+            });
+        }
+
     });
 })
 
