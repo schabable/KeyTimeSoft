@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def check(df):
     names = {'0': 'Krystian', '1': 'Kinga', '2': 'Patryk'}
-    model = joblib.load("model.joblib")
+    model = joblib.load("modelkfold.joblib")
 
     newTest = df
 

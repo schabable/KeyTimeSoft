@@ -1,11 +1,17 @@
 Patryk:
 Liczby wystąpień: [28 46 83]
 Liczby wystąpień: [16 47 93]
+kfold:
+Liczby wystąpień: [22 46 91]
+Liczby wystąpień: [20 47 87]
 
 
 Kinga:
 Liczby wystąpień: [45 62 48]
 Liczby wystąpień: [32 74 45]
+kfold:
+Liczby wystąpień: [35 74 44]
+Liczby wystąpień: [29 78 45]
 
 
 Krystian:
